@@ -64,10 +64,13 @@ export default function Home() {
         <div className="movies-grid">
           {movies.map(
             (movie) =>
-              movie.Title && // Make sure Title exists before calling toLowerCase
-              movie.Title.toLowerCase().startsWith(
-                searchQuery.toLowerCase(),
-              ) && <MovieCard movie={movie} key={movie.imdbID} />,
+              movie.Title && (
+                // && // Make sure Title exists before calling toLowerCase
+                //   movie.Title.toLowerCase().startsWith(
+                //     searchQuery.toLowerCase(),
+                //   ) // This is not needed because the api already filters out anf if we use this it filters unnecessary things when we type batman its sees the maovies starting with batman and "The Batman" movie will not appear.
+                <MovieCard movie={movie} key={movie.imdbID} />
+              ),
           )}
         </div>
       )}
